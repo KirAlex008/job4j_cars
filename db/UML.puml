@@ -1,0 +1,31 @@
+@startuml
+entity "Advertisement" {
+id: serial
+description: varchar(255)
+brand: varchar(255)
+carbody_id: int
+created: timestamp
+photo: varchar(255)
+user_id: int
+saled: boolean
+..
+}
+
+entity "User" {
+id: serial
+name: varchar(255)
+login: varchar(255)
+pass: varchar(255)
+
+..
+}
+
+entity "CarBody" {
+id: serial
+name: varchar(255)
+..
+}
+
+User::id "one" --> "many" Advertisement::user_id
+CarBody::id "many" <--> "many" Advertisement::carbody_id
+@enduml
