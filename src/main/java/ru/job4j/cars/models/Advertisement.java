@@ -24,23 +24,25 @@ public class Advertisement {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Advertisement() {
+    }
+
+    public Advertisement(Integer id, String description, String brand, String photo, Date created, boolean sold, User user) {
+        this.id = id;
+        this.description = description;
+        this.brand = brand;
+        this.photo = photo;
+        this.created = created;
+        this.sold = sold;
+        this.user = user;
+    }
+
     public List<CarBody> getBodies() {
         return bodies;
     }
 
     public void addCarBody(CarBody body) {
         this.bodies.add(body);
-    }
-
-    public static Advertisement of(String description, String brand, String photo, boolean sold, User user) {
-        Advertisement adv = new Advertisement();
-        adv.description = description;
-        adv.brand = brand;
-        adv.photo = photo;
-        adv.created = new Date(System.currentTimeMillis());
-        adv.sold = sold;
-        adv.user = user;
-        return adv;
     }
 
     public Integer getId() {
@@ -99,6 +101,13 @@ public class Advertisement {
         this.user = user;
     }
 
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -108,11 +117,6 @@ public class Advertisement {
             return false;
         }
         Advertisement that = (Advertisement) o;
-        return id.equals(that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+        return Objects.equals(id, that.id);
     }
 }

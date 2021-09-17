@@ -13,12 +13,14 @@ public class User {
     private String email;
     private String password;
 
-    public static User of(String name, String email, String password) {
-        User user = new User();
-        user.name = name;
-        user.email = email;
-        user.password = password;
-        return user;
+    public User() {
+    }
+
+    public User(Integer id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     public Integer getId() {
@@ -53,6 +55,13 @@ public class User {
         this.password = password;
     }
 
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -62,11 +71,6 @@ public class User {
             return false;
         }
         User user = (User) o;
-        return id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+        return Objects.equals(id, user.id);
     }
 }

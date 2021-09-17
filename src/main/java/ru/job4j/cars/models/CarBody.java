@@ -9,13 +9,15 @@ import java.util.Objects;
 public class CarBody {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String name;
 
-    public static CarBody of(String name) {
-        CarBody carBody = new CarBody();
-        carBody.name = name;
-        return carBody;
+    public CarBody() {
+    }
+
+    public CarBody(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {
@@ -35,6 +37,11 @@ public class CarBody {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -43,11 +50,6 @@ public class CarBody {
             return false;
         }
         CarBody carBody = (CarBody) o;
-        return id == carBody.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+        return Objects.equals(id, carBody.id);
     }
 }
