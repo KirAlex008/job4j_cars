@@ -16,8 +16,8 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String name, String email, String password) {
-        this.id = id;
+    public User(String name, String email, String password) {
+
         this.name = name;
         this.email = email;
         this.password = password;
@@ -55,7 +55,10 @@ public class User {
         this.password = password;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("User: id=%s, name=%s, email=%s, password=%s", id, name, email, password);
+    }
 
     @Override
     public int hashCode() {

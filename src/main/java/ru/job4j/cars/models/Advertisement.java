@@ -27,8 +27,7 @@ public class Advertisement {
     public Advertisement() {
     }
 
-    public Advertisement(Integer id, String description, String brand, String photo, Date created, boolean sold, User user) {
-        this.id = id;
+    public Advertisement(String description, String brand, String photo, Date created, boolean sold, User user) {
         this.description = description;
         this.brand = brand;
         this.photo = photo;
@@ -101,7 +100,10 @@ public class Advertisement {
         this.user = user;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("Advertisement: id=%s, description=%s, brand=%s, photo=%s, created=%s, sold=%s, user=%s", id, description, brand, photo, created, sold, user);
+    }
 
     @Override
     public int hashCode() {
