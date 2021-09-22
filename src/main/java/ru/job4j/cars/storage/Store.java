@@ -8,12 +8,10 @@ import java.util.Collection;
 
 public interface Store {
 
-    public Collection<Advertisement> findLastDay(User user);
+    public Collection<Advertisement> findLastDay();
 
-    public Collection<Advertisement> findPhoto(User user);
+    public Collection<Advertisement> findPhoto();
 
-    public Collection<Advertisement> findBrand(User user, String brand);
-
-    public User findUser(Integer id);
+    public Collection<Advertisement> findBrand(String brand);
 
 }
