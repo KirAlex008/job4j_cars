@@ -64,7 +64,7 @@ public class AdRepostiroty implements Store, AutoCloseable {
     }
     // объявления определенной марки.
     @Override
-    public Collection<Advertisement> findBrand( String brand) {
+    public Collection<Advertisement> findBrand(String brand) {
         return this.tx(
                 session -> session.createQuery("from Advertisement a where a.brand=:brand")
                         .setParameter("brand", brand)
